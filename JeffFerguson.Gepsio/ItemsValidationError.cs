@@ -21,11 +21,14 @@ namespace JeffFerguson.Gepsio
         /// Class constructor. This constructor will store a message and will automatically set the
         /// Exception property to a null value.
         /// </summary>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal ItemsValidationError(string message)
-            : base(message)
+        internal ItemsValidationError(string type, string message)
+            : base(type, message)
         {
             this.Items = new List<Item>();
         }
@@ -33,14 +36,17 @@ namespace JeffFerguson.Gepsio
         /// <summary>
         /// Class constructor. This constructor will store a message and an exception.
         /// </summary>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal ItemsValidationError(string message, Exception exception)
-            : base(message, exception)
+        internal ItemsValidationError(string message, string type, Exception exception)
+            : base(type, message, exception)
         {
             this.Items = new List<Item>();
         }

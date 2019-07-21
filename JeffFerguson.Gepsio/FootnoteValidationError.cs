@@ -19,11 +19,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="footnote">
         /// The footnote containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal FootnoteValidationError(Footnote footnote, string message)
-            : base(message)
+        internal FootnoteValidationError(Footnote footnote, string type, string message)
+            : base(type, message)
         {
             this.Footnote = footnote;
         }
@@ -34,14 +37,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="footnote">
         /// The footnote containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal FootnoteValidationError(Footnote footnote, string message, Exception exception)
-            : base(message, exception)
+        internal FootnoteValidationError(Footnote footnote, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.Footnote = footnote;
         }

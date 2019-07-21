@@ -21,11 +21,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="fact">
         /// The fact containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal FactValidationError(Fact fact, string message)
-            : base(message)
+        internal FactValidationError(Fact fact, string type, string message)
+            : base(type, message)
         {
             this.Fact = fact;
         }
@@ -36,14 +39,18 @@ namespace JeffFerguson.Gepsio
         /// <param name="fact">
         /// The fact containing the error being reported.
         /// </param>
+
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal FactValidationError(Fact fact, string message, Exception exception)
-            : base(message, exception)
+        internal FactValidationError(Fact fact, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.Fact = fact;
         }

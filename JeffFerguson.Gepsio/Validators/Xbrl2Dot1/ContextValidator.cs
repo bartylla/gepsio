@@ -31,10 +31,11 @@ namespace JeffFerguson.Gepsio.Validators.Xbrl2Dot1
             {
                 if (validatingContext.PeriodEndDate < validatingContext.PeriodStartDate)
                 {
-                    string MessageFormat = AssemblyResources.GetName("PeriodEndDateLessThanPeriodStartDate");
+                    string type = "PeriodEndDateLessThanPeriodStartDate";
+                    string MessageFormat = AssemblyResources.GetName(type);
                     var MessageBuilder = new StringBuilder();
                     MessageBuilder.AppendFormat(MessageFormat, validatingContext.Id);
-                    this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, MessageBuilder.ToString()));
+                    this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, type, MessageBuilder.ToString()));
                 }
             }
         }
@@ -52,10 +53,11 @@ namespace JeffFerguson.Gepsio.Validators.Xbrl2Dot1
         {
             if (ScenarioNode.NamespaceURI.Equals(XbrlDocument.XbrlNamespaceUri) == true)
             {
-                string MessageFormat = AssemblyResources.GetName("ScenarioNodeUsingXBRLNamespace");
+                string type = "ScenarioNodeUsingXBRLNamespace";
+                string MessageFormat = AssemblyResources.GetName(type);
                 StringBuilder MessageBuilder = new StringBuilder();
                 MessageBuilder.AppendFormat(MessageFormat, validatingContext.Id, ScenarioNode.Name);
-                this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, MessageBuilder.ToString()));
+                this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, type, MessageBuilder.ToString()));
             }
             if (ScenarioNode.Prefix.Length > 0)
             {
@@ -67,10 +69,11 @@ namespace JeffFerguson.Gepsio.Validators.Xbrl2Dot1
                     {
                         if (NodeElement.SubstitutionGroup != Element.ElementSubstitutionGroup.Unknown)
                         {
-                            string MessageFormat = AssemblyResources.GetName("ScenarioNodeUsingSubGroupInXBRLNamespace");
+                            string type = "ScenarioNodeUsingSubGroupInXBRLNamespace";
+                            string MessageFormat = AssemblyResources.GetName(type);
                             StringBuilder MessageBuilder = new StringBuilder();
                             MessageBuilder.AppendFormat(MessageFormat, validatingContext.Id, ScenarioNode.Name, NodeSchema.SchemaReferencePath);
-                            this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, MessageBuilder.ToString()));
+                            this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, type, MessageBuilder.ToString()));
                         }
                     }
                 }
@@ -101,10 +104,11 @@ namespace JeffFerguson.Gepsio.Validators.Xbrl2Dot1
         {
             if (SegmentNode.NamespaceURI.Equals(XbrlDocument.XbrlNamespaceUri) == true)
             {
-                string MessageFormat = AssemblyResources.GetName("SegmentNodeUsingXBRLNamespace");
+                string type = "SegmentNodeUsingXBRLNamespace";
+                string MessageFormat = AssemblyResources.GetName(type);
                 StringBuilder MessageBuilder = new StringBuilder();
                 MessageBuilder.AppendFormat(MessageFormat, validatingContext.Id, SegmentNode.Name);
-                this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, MessageBuilder.ToString()));
+                this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, type, MessageBuilder.ToString()));
             }
         }
 
@@ -120,10 +124,11 @@ namespace JeffFerguson.Gepsio.Validators.Xbrl2Dot1
                     {
                         if (NodeElement.SubstitutionGroup != Element.ElementSubstitutionGroup.Unknown)
                         {
-                            string MessageFormat = AssemblyResources.GetName("SegmentNodeUsingSubGroupInXBRLNamespace");
+                            string type = "SegmentNodeUsingSubGroupInXBRLNamespace";
+                            string MessageFormat = AssemblyResources.GetName(type);
                             StringBuilder MessageBuilder = new StringBuilder();
                             MessageBuilder.AppendFormat(MessageFormat, validatingContext.Id, SegmentNode.Name, NodeSchema.SchemaReferencePath);
-                            this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, MessageBuilder.ToString()));
+                            this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, type, MessageBuilder.ToString()));
                         }
                     }
                 }
@@ -142,10 +147,11 @@ namespace JeffFerguson.Gepsio.Validators.Xbrl2Dot1
                 return;
             if (segmentNodeType.CanConvert(text) == false)
             {
-                string MessageFormat = AssemblyResources.GetName("SegmentTextNotConvertable");
+                string type = "SegmentTextNotConvertable";
+                string MessageFormat = AssemblyResources.GetName(type);
                 StringBuilder MessageBuilder = new StringBuilder();
                 MessageBuilder.AppendFormat(MessageFormat, text);
-                this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, MessageBuilder.ToString()));
+                this.validatingFragment.AddValidationError(new ContextValidationError(validatingContext, type, MessageBuilder.ToString()));
             }
         }
     }

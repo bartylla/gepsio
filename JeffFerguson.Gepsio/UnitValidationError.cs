@@ -19,11 +19,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="unit">
         /// The unit containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal UnitValidationError(Unit unit, string message)
-            : base(message)
+        internal UnitValidationError(Unit unit, string type, string message)
+            : base(type, message)
         {
             this.Unit = unit;
         }
@@ -34,14 +37,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="unit">
         /// The unit containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal UnitValidationError(Unit unit, string message, Exception exception)
-            : base(message, exception)
+        internal UnitValidationError(Unit unit, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.Unit = Unit;
         }

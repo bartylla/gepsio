@@ -54,9 +54,10 @@ namespace JeffFerguson.Gepsio
             if (this.Culture == null)
             {
                 StringBuilder MessageBuilder = new StringBuilder();
-                string StringFormat = AssemblyResources.GetName("NoLangForFootnote");
+                string type = "NoLangForFootnote";
+                string StringFormat = AssemblyResources.GetName(type);
                 MessageBuilder.AppendFormat(StringFormat, this.Label);
-                this.Link.Fragment.AddValidationError(new FootnoteValidationError(this, MessageBuilder.ToString()));
+                this.Link.Fragment.AddValidationError(new FootnoteValidationError(this, type, MessageBuilder.ToString()));
             }
         }
     }

@@ -162,18 +162,20 @@ namespace JeffFerguson.Gepsio.Validators.Xbrl2Dot1
                 if(AtLeastOneItemWithZeroPrecision == true)
                 {
                     var MessageBuilder = new StringBuilder();
-                    string StringFormat = AssemblyResources.GetName("SummationConceptUsesContributingItemWithPrecisionZero");
+                    string type = "SummationConceptUsesContributingItemWithPrecisionZero";
+                    string StringFormat = AssemblyResources.GetName(type);
                     MessageBuilder.AppendFormat(StringFormat, SummationConceptItem.Name);
-                    ValidatedFragment.AddValidationError(new SummationConceptValidationError(CurrentSummationConcept, MessageBuilder.ToString()));
+                    ValidatedFragment.AddValidationError(new SummationConceptValidationError(CurrentSummationConcept, type, MessageBuilder.ToString()));
                     return;
                 }
                 ContributingConceptRoundedValueTotal = SummationConceptItem.Round(ContributingConceptRoundedValueTotal);
                 if (SummationConceptRoundedValue != ContributingConceptRoundedValueTotal)
                 {
                     var MessageBuilder = new StringBuilder();
-                    string StringFormat = AssemblyResources.GetName("SummationConceptError");
+                    string type = "SummationConceptError";
+                    string StringFormat = AssemblyResources.GetName(type);
                     MessageBuilder.AppendFormat(StringFormat, SummationConceptItem.Name, SummationConceptRoundedValue, ContributingConceptRoundedValueTotal);
-                    ValidatedFragment.AddValidationError(new SummationConceptValidationError(CurrentSummationConcept, MessageBuilder.ToString()));
+                    ValidatedFragment.AddValidationError(new SummationConceptValidationError(CurrentSummationConcept, type, MessageBuilder.ToString()));
                     return;
                 }
             }

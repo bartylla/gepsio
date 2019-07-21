@@ -19,11 +19,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="arc">
         /// The definition arc containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal DefinitionArcValidationError(DefinitionArc arc, string message)
-            : base(message)
+        internal DefinitionArcValidationError(DefinitionArc arc, string type, string message)
+            : base(type, message)
         {
             this.Arc = arc;
         }
@@ -34,14 +37,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="arc">
         /// The definition arc containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal DefinitionArcValidationError(DefinitionArc arc, string message, Exception exception)
-            : base(message, exception)
+        internal DefinitionArcValidationError(DefinitionArc arc, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.Arc = arc;
         }

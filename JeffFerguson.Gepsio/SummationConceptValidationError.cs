@@ -19,11 +19,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="summationConcept">
         /// The SummationConcept containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal SummationConceptValidationError(SummationConcept summationConcept, string message)
-            : base(message)
+        internal SummationConceptValidationError(SummationConcept summationConcept, string type, string message)
+            : base(type, message)
         {
             this.SummationConcept = summationConcept;
         }
@@ -34,14 +37,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="summationConcept">
         /// The SummationConcept containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal SummationConceptValidationError(SummationConcept summationConcept, string message, Exception exception)
-            : base(message, exception)
+        internal SummationConceptValidationError(SummationConcept summationConcept, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.SummationConcept = summationConcept;
         }

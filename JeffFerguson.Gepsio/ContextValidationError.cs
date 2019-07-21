@@ -19,11 +19,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="context">
         /// The context containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal ContextValidationError(Context context, string message)
-            : base(message)
+        internal ContextValidationError(Context context, string type, string message)
+            : base(type, message)
         {
             this.Context = context;
         }
@@ -34,14 +37,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="context">
         /// The context containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal ContextValidationError(Context context, string message, Exception exception)
-            : base(message, exception)
+        internal ContextValidationError(Context context, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.Context = context;
         }

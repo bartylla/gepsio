@@ -19,11 +19,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="hyperlinkReference">
         /// The hyperlink reference containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal HyperlinkReferenceValidationError(HyperlinkReference hyperlinkReference, string message)
-            : base(message)
+        internal HyperlinkReferenceValidationError(HyperlinkReference hyperlinkReference, string type, string message)
+            : base(type, message)
         {
             this.HyperlinkReference = hyperlinkReference;
         }
@@ -34,14 +37,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="hyperlinkReference">
         /// The hyperlink reference containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal HyperlinkReferenceValidationError(HyperlinkReference hyperlinkReference, string message, Exception exception)
-            : base(message, exception)
+        internal HyperlinkReferenceValidationError(HyperlinkReference hyperlinkReference, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.HyperlinkReference = HyperlinkReference;
         }
