@@ -19,11 +19,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="arcroleReference">
         /// The arcrole reference containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal ArcroleReferenceValidationError(ArcroleReference arcroleReference, string message)
-            : base(message)
+        internal ArcroleReferenceValidationError(ArcroleReference arcroleReference, string type, string message)
+            : base(type, message)
         {
             this.ArcroleReference = arcroleReference;
         }
@@ -34,14 +37,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="arcroleReference">
         /// The arcrole reference containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal ArcroleReferenceValidationError(ArcroleReference arcroleReference, string message, Exception exception)
-            : base(message, exception)
+        internal ArcroleReferenceValidationError(ArcroleReference arcroleReference, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.ArcroleReference = arcroleReference;
         }

@@ -19,11 +19,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="schema">
         /// The schema containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal SchemaValidationError(XbrlSchema schema, string message)
-            : base(message)
+        internal SchemaValidationError(XbrlSchema schema, string type, string message)
+            : base(type, message)
         {
             this.Schema = schema;
         }
@@ -34,14 +37,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="schema">
         /// The schema containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal SchemaValidationError(XbrlSchema schema, string message, Exception exception)
-            : base(message, exception)
+        internal SchemaValidationError(XbrlSchema schema, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.Schema = schema;
         }

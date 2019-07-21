@@ -160,9 +160,10 @@ namespace JeffFerguson.Gepsio
             catch (FileNotFoundException fnfEx)
             {
                 StringBuilder MessageBuilder = new StringBuilder();
-                string StringFormat = AssemblyResources.GetName("FileNotFoundDuringSchemaCreation");
+                string type = "FileNotFoundDuringSchemaCreation";
+                string StringFormat = AssemblyResources.GetName(type);
                 MessageBuilder.AppendFormat(StringFormat, this.SchemaReferencePath);
-                this.Fragment.AddValidationError(new SchemaValidationError(this, MessageBuilder.ToString(), fnfEx));
+                this.Fragment.AddValidationError(new SchemaValidationError(this, type, MessageBuilder.ToString(), fnfEx));
                 return;
             }
             catch (WebException webEx)
@@ -196,9 +197,10 @@ namespace JeffFerguson.Gepsio
                 if (localSchemaAvailable == false)
                 {
                     StringBuilder MessageBuilder = new StringBuilder();
-                    string StringFormat = AssemblyResources.GetName("WebExceptionThrownDuringSchemaCreation");
+                    string type = "WebExceptionThrownDuringSchemaCreation";
+                    string StringFormat = AssemblyResources.GetName(type);
                     MessageBuilder.AppendFormat(StringFormat, this.SchemaReferencePath);
-                    this.Fragment.AddValidationError(new SchemaValidationError(this, MessageBuilder.ToString(), webEx));
+                    this.Fragment.AddValidationError(new SchemaValidationError(this, type, MessageBuilder.ToString(), webEx));
                     return;
                 }
                 this.LoadPath = schemaLocalPath;
@@ -236,9 +238,10 @@ namespace JeffFerguson.Gepsio
             if (thisXmlSchema.Read(schemaPath) == false)
             {
                 StringBuilder MessageBuilder = new StringBuilder();
-                string StringFormat = AssemblyResources.GetName("SchemaFileCandidateDoesNotContainSchemaRootNode");
+                string type = "SchemaFileCandidateDoesNotContainSchemaRootNode";
+                string StringFormat = AssemblyResources.GetName(type);
                 MessageBuilder.AppendFormat(StringFormat, schemaPath);
-                this.Fragment.AddValidationError(new SchemaValidationError(this, MessageBuilder.ToString()));
+                this.Fragment.AddValidationError(new SchemaValidationError(this, type, MessageBuilder.ToString()));
                 return false;
             }
             thisXmlSchemaSet.Add(thisXmlSchema);
@@ -329,7 +332,7 @@ namespace JeffFerguson.Gepsio
 
             // The first check is to see whether or not the "filename" is actually an HTTP-based
             // reference. If it is, then it will be returned without modification.
-
+            
             var lowerCaseSchemaFilename = SchemaFilename.ToLower();
             if (lowerCaseSchemaFilename.StartsWith("http://") == true)
                 return SchemaFilename;
@@ -368,9 +371,10 @@ namespace JeffFerguson.Gepsio
             if (this.SchemaRootNode == null)
             {
                 StringBuilder MessageBuilder = new StringBuilder();
-                string StringFormat = AssemblyResources.GetName("SchemaFileCandidateDoesNotContainSchemaRootNode");
+                string type = "SchemaFileCandidateDoesNotContainSchemaRootNode";
+                string StringFormat = AssemblyResources.GetName(type);
                 MessageBuilder.AppendFormat(StringFormat, this.SchemaReferencePath);
-                this.Fragment.AddValidationError(new SchemaValidationError(this, MessageBuilder.ToString()));
+                this.Fragment.AddValidationError(new SchemaValidationError(this, type, MessageBuilder.ToString()));
                 return;
             }
             this.TargetNamespace = this.SchemaRootNode.Attributes["targetNamespace"].Value;

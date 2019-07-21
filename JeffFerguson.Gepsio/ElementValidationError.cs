@@ -20,11 +20,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="element">
         /// The element containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal ElementValidationError(Element element, string message)
-            : base(message)
+        internal ElementValidationError(Element element, string type, string message)
+            : base(type, message)
         {
             this.Element = element;
         }
@@ -35,14 +38,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="element">
         /// The element containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal ElementValidationError(Element element, string message, Exception exception)
-            : base(message, exception)
+        internal ElementValidationError(Element element, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.Element = element;
         }

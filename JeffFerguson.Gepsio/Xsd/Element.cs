@@ -207,11 +207,11 @@ namespace JeffFerguson.Gepsio.Xsd
             {
 
                 // We can't identify the type, so throw an exception.
-
-                string MessageFormat = AssemblyResources.GetName("InvalidElementPeriodType");
+                string type = "InvalidElementPeriodType";
+                string MessageFormat = AssemblyResources.GetName(type);
                 StringBuilder MessageFormatBuilder = new StringBuilder();
                 MessageFormatBuilder.AppendFormat(MessageFormat, this.Schema.SchemaReferencePath, PeriodType, this.Name);
-                this.Schema.Fragment.AddValidationError(new ElementValidationError(this, MessageFormatBuilder.ToString()));
+                this.Schema.Fragment.AddValidationError(new ElementValidationError(this, type, MessageFormatBuilder.ToString()));
             }
         }
 

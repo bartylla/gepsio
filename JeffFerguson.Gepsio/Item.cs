@@ -237,26 +237,29 @@ namespace JeffFerguson.Gepsio
             {
                 if (thisParentFragment.Schemas.Count == 0)
                 {
-                    string MessageFormat = AssemblyResources.GetName("NoSchemasForFragment");
+                    string type = "NoSchemasForFragment";
+                    string MessageFormat = AssemblyResources.GetName(type);
                     StringBuilder MessageFormatBuilder = new StringBuilder();
                     MessageFormatBuilder.AppendFormat(MessageFormat);
-                    thisParentFragment.AddValidationError(new ItemValidationError(this, MessageFormatBuilder.ToString()));
+                    thisParentFragment.AddValidationError(new ItemValidationError(this, type, MessageFormatBuilder.ToString()));
                 }
                 else
                 {
-                    string MessageFormat = AssemblyResources.GetName("NoSchemasForNamespace");
+                    string type = "NoSchemasForNamespace";
+                    string MessageFormat = AssemblyResources.GetName(type);
                     StringBuilder MessageFormatBuilder = new StringBuilder();
                     MessageFormatBuilder.AppendFormat(MessageFormat, this.Name, this.Namespace);
-                    thisParentFragment.AddValidationError(new ItemValidationError(this, MessageFormatBuilder.ToString()));
+                    thisParentFragment.AddValidationError(new ItemValidationError(this, type, MessageFormatBuilder.ToString()));
                 }
             }
             this.SchemaElement = thisParentFragment.Schemas.GetElement(this.Name);
             if (this.SchemaElement == null)
             {
-                string MessageFormat = AssemblyResources.GetName("CannotFindFactElementInSchema");
+                string type = "CannotFindFactElementInSchema";
+                string MessageFormat = AssemblyResources.GetName(type);
                 StringBuilder MessageFormatBuilder = new StringBuilder();
                 MessageFormatBuilder.AppendFormat(MessageFormat, this.Name, thisSchema.SchemaReferencePath);
-                thisParentFragment.AddValidationError(new ItemValidationError(this, MessageFormatBuilder.ToString()));
+                thisParentFragment.AddValidationError(new ItemValidationError(this, type, MessageFormatBuilder.ToString()));
             }
         }
 
@@ -269,18 +272,21 @@ namespace JeffFerguson.Gepsio
                 this.Type = thisSchema.GetXmlSchemaType(ItemTypeValue);
             if (this.Type == null)
             {
+                var type = "";
                 var MessageFormatBuilder = new StringBuilder();
                 if (thisSchema == null)
                 {
-                    string MessageFormat = AssemblyResources.GetName("NoSchemaForElementItemType");
+                    type = "NoSchemaForElementItemType";
+                    string MessageFormat = AssemblyResources.GetName(type);
                     MessageFormatBuilder.AppendFormat(MessageFormat, ItemTypeValue.Name, this.Name);
                 }
                 else
                 {
-                    string MessageFormat = AssemblyResources.GetName("InvalidElementItemType");
+                    type = "InvalidElementItemType";
+                    string MessageFormat = AssemblyResources.GetName(type);
                     MessageFormatBuilder.AppendFormat(MessageFormat, thisSchema.SchemaReferencePath, ItemTypeValue.Name, this.Name);
                 }
-                thisParentFragment.AddValidationError(new ItemValidationError(this, MessageFormatBuilder.ToString()));
+                thisParentFragment.AddValidationError(new ItemValidationError(this, type, MessageFormatBuilder.ToString()));
             }
         }
 

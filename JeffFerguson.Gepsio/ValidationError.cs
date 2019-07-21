@@ -8,6 +8,11 @@ namespace JeffFerguson.Gepsio
     public class ValidationError
     {
         /// <summary>
+        /// An internal type classification of the error.
+        /// </summary>
+        public string Type { get; private set; }
+
+        /// <summary>
         /// A message describing the error.
         /// </summary>
         public string Message { get; private set; }
@@ -23,30 +28,37 @@ namespace JeffFerguson.Gepsio
         /// Class constructor. This constructor will store a message and will automatically set the
         /// Exception property to a null value.
         /// </summary>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal ValidationError(string message)
+        internal ValidationError(string type, string message)
         {
-            Init(message, null);
+            Init(type, message, null);
         }
 
         /// <summary>
         /// Class constructor. This constructor will store a message and an exception.
         /// </summary>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal ValidationError(string message, Exception exception)
+        internal ValidationError(string type, string message, Exception exception)
         {
-            Init(message, exception);
+            Init(type, message, exception);
         }
 
-        private void Init(string message, Exception exception)
+        private void Init(string type, string message, Exception exception)
         {
+            this.Type = type;
             this.Message = message;
             this.Exception = exception;
         }

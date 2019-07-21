@@ -21,7 +21,7 @@ namespace JeffFerguson.Gepsio
         /// The ID of this unit.
         /// </summary>
         public string Id { get; private set; }
-
+        
         /// <summary>
         /// A collection of <see cref="QualifiedName"/> objects representing the set of measure qualified names for this unit.
         /// </summary>
@@ -75,10 +75,11 @@ namespace JeffFerguson.Gepsio
             {
                 if (thisRatioDenominatorQualifiedNames.Contains(CurrentNumeratorMeasure) == true)
                 {
-                    string MessageFormat = AssemblyResources.GetName("UnitRatioUsesSameMeasureInNumeratorAndDenominator");
+                    string type = "UnitRatioUsesSameMeasureInNumeratorAndDenominator";
+                    string MessageFormat = AssemblyResources.GetName(type);
                     StringBuilder MessageFormatBuilder = new StringBuilder();
                     MessageFormatBuilder.AppendFormat(MessageFormat, this.Id, CurrentNumeratorMeasure.ToString());
-                    this.Fragment.AddValidationError(new UnitValidationError(this, MessageFormatBuilder.ToString()));
+                    this.Fragment.AddValidationError(new UnitValidationError(this, type, MessageFormatBuilder.ToString()));
                     return;
                 }
             }

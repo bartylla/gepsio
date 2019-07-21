@@ -19,11 +19,14 @@ namespace JeffFerguson.Gepsio
         /// <param name="arc">
         /// The footnote arc containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
-        internal FootnoteArcValidationError(FootnoteArc arc, string message)
-            : base(message)
+        internal FootnoteArcValidationError(FootnoteArc arc, string type, string message)
+            : base(type, message)
         {
             this.Arc = arc;
         }
@@ -34,14 +37,17 @@ namespace JeffFerguson.Gepsio
         /// <param name="arc">
         /// The footnote arc containing the error being reported.
         /// </param>
+        /// <param name="type">
+        /// The type to be stored in the validation error.
+        /// </param>
         /// <param name="message">
         /// The message to be stored in the validation error.
         /// </param>
         /// <param name="exception">
         /// The exception to be stored in the validation error.
         /// </param>
-        internal FootnoteArcValidationError(FootnoteArc arc, string message, Exception exception)
-            : base(message, exception)
+        internal FootnoteArcValidationError(FootnoteArc arc, string type, string message, Exception exception)
+            : base(type, message, exception)
         {
             this.Arc = arc;
         }
