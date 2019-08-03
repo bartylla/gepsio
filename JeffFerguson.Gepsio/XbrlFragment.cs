@@ -153,7 +153,7 @@ namespace JeffFerguson.Gepsio
             this.Document = ParentDocument;
             this.NamespaceManager = namespaceManager;
             this.XbrlRootNode = XbrlRootNode;
-            this.Schemas = new XbrlSchemaCollection();
+            this.Schemas = new XbrlSchemaCollection(ParentDocument.Config.GetNamespaceSchemaLocationDictionary());
             this.ValidationErrors = new List<ValidationError>();
             CreateNamespaceManager();
             //---------------------------------------------------------------------------

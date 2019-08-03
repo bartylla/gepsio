@@ -41,7 +41,6 @@ namespace JeffFerguson.Gepsio
     /// </remarks>
     public class XbrlDocument
     {
-
         // namespace URIs
 
         internal static string XbrlNamespaceUri = "http://www.xbrl.org/2003/instance";
@@ -85,6 +84,11 @@ namespace JeffFerguson.Gepsio
         internal static string XbrlLabelLinkbaseReferenceRoleNamespaceUri = "http://www.xbrl.org/2003/role/labelLinkbaseRef";
         internal static string XbrlPresentationLinkbaseReferenceRoleNamespaceUri = "http://www.xbrl.org/2003/role/presentationLinkbaseRef";
         internal static string XbrlReferenceLinkbaseReferenceRoleNamespaceUri = "http://www.xbrl.org/2003/role/referenceLinkbaseRef";
+
+        /// <summary>
+        /// The configuration of the XBRL processing.
+        /// </summary>
+        public Configuration Config;
 
         /// <summary>
         /// The name of the XML document used to contain the XBRL data.
@@ -170,8 +174,12 @@ namespace JeffFerguson.Gepsio
         /// <param name="Filename">
         /// The filename of the XML document to load.
         /// </param>
-        public void Load(string Filename)
+        /// <param name="Config">
+        /// The configuration for the processing.
+        /// </param>
+        public void Load(string Filename, Configuration Config)
         {
+            this.Config = Config;
             var SchemaValidXbrl = Container.Resolve<IDocument>();
             SchemaValidXbrl.Load(Filename);
             this.Filename = Filename;
